@@ -36,6 +36,7 @@ yum --setopt=tsflags=nodocs -y install sudo  && \
 yum --setopt=tsflags=nodocs -y install xfsprogs  && \
 yum --setopt=tsflags=nodocs -y install glusterfs  && \
 yum --setopt=tsflags=nodocs -y install glusterfs-server  && \
+yum --setopt=tsflags=nodocs -y install gluster-block  && \
 yum --setopt=tsflags=nodocs -y install glusterfs-rdma  && \
 yum --setopt=tsflags=nodocs -y install glusterfs-geo-replication && yum clean all && \
 sed -i '/Defaults    requiretty/c\#Defaults    requiretty' /etc/sudoers && \
@@ -58,6 +59,7 @@ chmod 500 /usr/sbin/gluster-setup.sh && \
 systemctl disable nfs-server.service && \
 systemctl mask getty.target && \
 systemctl enable glusterd.service && \
+systemctl enable gluster-blockd.service && \
 systemctl enable gluster-setup.service
 
 EXPOSE 2222 111 245 443 24007 2049 8080 6010 6011 6012 38465 38466 38468 38469 49152 49153 49154 49156 49157 49158 49159 49160 49161 49162
